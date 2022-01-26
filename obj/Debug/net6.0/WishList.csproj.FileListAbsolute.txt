@@ -1,0 +1,15 @@
+D:\workspace\WishList\bin\Debug\net6.0\WishList.exe
+D:\workspace\WishList\bin\Debug\net6.0\WishList.deps.json
+D:\workspace\WishList\bin\Debug\net6.0\WishList.runtimeconfig.json
+D:\workspace\WishList\bin\Debug\net6.0\WishList.dll
+D:\workspace\WishList\bin\Debug\net6.0\ref\WishList.dll
+D:\workspace\WishList\bin\Debug\net6.0\WishList.pdb
+D:\workspace\WishList\obj\Debug\net6.0\WishList.csproj.AssemblyReference.cache
+D:\workspace\WishList\obj\Debug\net6.0\WishList.GeneratedMSBuildEditorConfig.editorconfig
+D:\workspace\WishList\obj\Debug\net6.0\WishList.AssemblyInfoInputs.cache
+D:\workspace\WishList\obj\Debug\net6.0\WishList.AssemblyInfo.cs
+D:\workspace\WishList\obj\Debug\net6.0\WishList.csproj.CoreCompileInputs.cache
+D:\workspace\WishList\obj\Debug\net6.0\WishList.dll
+D:\workspace\WishList\obj\Debug\net6.0\ref\WishList.dll
+D:\workspace\WishList\obj\Debug\net6.0\WishList.pdb
+D:\workspace\WishList\obj\Debug\net6.0\WishList.genruntimeconfig.cache

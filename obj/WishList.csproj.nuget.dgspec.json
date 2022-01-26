@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\workspace\\WishList\\WishList.csproj": {}
+    "D:\\workspace\\WishList\\WishList.csproj": {}
   },
   "projects": {
-    "d:\\workspace\\WishList\\WishList.csproj": {
+    "D:\\workspace\\WishList\\WishList.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\workspace\\WishList\\WishList.csproj",
+        "projectUniqueName": "D:\\workspace\\WishList\\WishList.csproj",
         "projectName": "WishList",
-        "projectPath": "d:\\workspace\\WishList\\WishList.csproj",
+        "projectPath": "D:\\workspace\\WishList\\WishList.csproj",
         "packagesPath": "C:\\Users\\Sabrina\\.nuget\\packages\\",
-        "outputPath": "d:\\workspace\\WishList\\obj\\",
+        "outputPath": "D:\\workspace\\WishList\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Sabrina\\AppData\\Roaming\\NuGet\\NuGet.Config"
