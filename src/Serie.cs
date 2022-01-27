@@ -4,6 +4,8 @@ namespace WishList.src
     {
         private int eps { get; set; }
         private int eps_assistidos { get; set; }
+        private bool excluido { get; set; }
+
     
         public Serie(string titulo, Genero genero, int eps, int eps_assistidos, int ano_estreia)
         {
@@ -12,6 +14,7 @@ namespace WishList.src
             this.eps = eps;
             this.eps_assistidos = eps_assistidos;
             this.ano_estreia = ano_estreia;
+            this.excluido = false;
         }
 
         public Serie(string titulo, Genero genero, int eps, int eps_assistidos, int ano_estreia, string sinopse)
@@ -42,6 +45,11 @@ namespace WishList.src
         public int retornaId()
         {
             return this.id;
+        }
+
+        public void Excluir()
+        {
+            this.excluido = true;
         }
 
     }
