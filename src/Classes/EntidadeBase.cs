@@ -1,4 +1,6 @@
-namespace WishList.src
+using WishList.src.Enums;
+
+namespace WishList.src.Classes
 {
     public abstract class  EntidadeBase
     {

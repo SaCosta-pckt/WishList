@@ -1,4 +1,4 @@
-namespace WishList.src
+namespace WishList.src.Enums
 {
     public enum Genero
     {

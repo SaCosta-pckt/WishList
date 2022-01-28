@@ -1,4 +1,6 @@
-namespace WishList.src
+using WishList.src.Enums;
+
+namespace WishList.src.Classes
 {
     public class Serie : EntidadeBase
     {
@@ -7,8 +9,9 @@ namespace WishList.src
         private bool excluido { get; set; }
 
     
-        public Serie(string titulo, Genero genero, int eps, int eps_assistidos, int ano_estreia)
+        public Serie(int id, string titulo, Genero genero, int eps, int eps_assistidos, int ano_estreia)
         {
+            this.id = id;
             this.titulo = titulo;
             this.genero = genero;
             this.eps = eps;
@@ -17,12 +20,12 @@ namespace WishList.src
             this.excluido = false;
         }
 
-        public Serie(string titulo, Genero genero, int eps, int eps_assistidos, int ano_estreia, string sinopse)
+        public Serie(int id, string titulo, Genero genero, int eps, int ano_estreia, string sinopse)
         {
+            this.id = id;
             this.titulo = titulo;
             this.genero = genero;
             this.eps = eps;
-            this.eps_assistidos = eps_assistidos;
             this.ano_estreia = ano_estreia;
             this.sinopse = sinopse;
         }
@@ -35,6 +38,7 @@ namespace WishList.src
             retorno += "Episódios: " + this.eps + Environment.NewLine;
             retorno += "Assistidos: " + this.eps_assistidos + Environment.NewLine;
             retorno += "Ano de Lançamento: " + this.ano_estreia + Environment.NewLine;
+            retorno += "Excluido: " + this.excluido;
             return retorno;
         }
 
@@ -45,6 +49,11 @@ namespace WishList.src
         public int retornaId()
         {
             return this.id;
+        }
+
+        public bool retornaExcluido()
+        {
+            return this.excluido;
         }
 
         public void Excluir()

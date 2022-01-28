@@ -1,11 +1,15 @@
 ﻿using static System.Console;
+using WishList.src.Classes;
+using WishList.src.Enums;
 
 namespace WishList
 {
     class Program
     {
+        static SerieRepositorio repositorio = new SerieRepositorio();
         static void Main(string[] args)
         {
+            WriteLine("-----------Bem Vindo(a)!-----------");
             string opcaoUsuario = ObterOpcaoUsuario();
 
             while (opcaoUsuario != "X")
@@ -13,16 +17,16 @@ namespace WishList
                 switch (opcaoUsuario)
                 {
                     case "1":
-                        //ListarSeries();
+                        ListarSeries();
                         break;
                     case "2":
-                        //InserirSeries();
+                        InserirSeries();
                         break;
                     case "3":
-                        //AtualizarSeries();
+                        AtualizarSeries();
                         break;
                     case "4":
-                        //ExcluirSeries();
+                        ExcluirSeries();
                         break;
                     case "5":
                         //VisualizarSeries();
@@ -33,13 +37,116 @@ namespace WishList
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+                opcaoUsuario = ObterOpcaoUsuario();
             }
+            WriteLine("Obrigada por usar nossos serviços!");
+            ReadLine();
+        }
+
+        private static void ExcluirSeries()
+        {
+            Write("Digite o id da série: ");
+            repositorio.Exclui(int.Parse(ReadLine()));
+        }
+
+        private static void VisualizarSeries()
+        {
+            Write("Digite o id da série: ");
+            int indiceSerie = int.Parse(ReadLine());
+            var serie = repositorio.RetornaPorId(indiceSerie);
+            WriteLine(serie);
+        }
+        private static void AtualizarSeries()
+        {
+            Write("Digite o id da série: ");
+            int indiceSerie = int.Parse(ReadLine());
+
+            foreach (int i  in Enum.GetValues(typeof(Genero)))
+            {
+                WriteLine("{0} - {1}", i, Enum.GetName(typeof(Genero),i));                
+            }
+
+            WriteLine("Digite o gênero entre as opções acima: ");
+            int entradaGenero = int.Parse(ReadLine());
+
+            WriteLine("Digite o título da série: ");
+            string entradaTitulo = ReadLine();
+
+            WriteLine("Digite a quantidade de episódios da série: ");
+            int entradaEps = int.Parse(ReadLine());
+
+            WriteLine("Digite o ano de lançamento da série: ");
+            int entradaAno = int.Parse(ReadLine());
+
+            WriteLine("Digite a sinopse da série: ");
+            string entradaSinopse = ReadLine();
+
+            //int id, string titulo, Genero genero, int eps, int ano_estreia, string sinopse
+            Serie atualizaSerie = new Serie(id: indiceSerie,
+                                        titulo: entradaTitulo,
+                                        genero: (Genero)entradaGenero,
+                                        eps: entradaEps,
+                                        ano_estreia: entradaAno,
+                                        sinopse: entradaSinopse);
+            repositorio.Atualiza(indiceSerie,atualizaSerie);
+        }
+
+        private static void ListarSeries()
+        {
+            WriteLine("Listar séries");
+            var lista = repositorio.Lista();
+
+            if (lista.Count == 0)
+            {
+                WriteLine("Nenhuma série cadastrada.");
+                return;
+            }
+
+            foreach (var serie in lista)
+            {
+                var excluido = serie.retornaExcluido();
+                
+                WriteLine("#ID {0}: - {1} ({2})", serie.retornaId(), serie.retornaTitulo(), (excluido ? "Excluido" : ""));
+            }
+        }
+
+        private static void InserirSeries()
+        {
+            WriteLine("Inserir nova série:");
+
+            foreach (int i  in Enum.GetValues(typeof(Genero)))
+            {
+                WriteLine("{0} - {1}", i, Enum.GetName(typeof(Genero),i));                
+            }
+
+            WriteLine("Digite o gênero entre as opções acima: ");
+            int entradaGenero = int.Parse(ReadLine());
+
+            WriteLine("Digite o título da série: ");
+            string entradaTitulo = ReadLine();
+
+            WriteLine("Digite a quantidade de episódios da série: ");
+            int entradaEps = int.Parse(ReadLine());
+
+            WriteLine("Digite o ano de lançamento da série: ");
+            int entradaAno = int.Parse(ReadLine());
+
+            WriteLine("Digite a sinopse da série: ");
+            string entradaSinopse = ReadLine();
+
+            //int id, string titulo, Genero genero, int eps, int ano_estreia, string sinopse
+            Serie novaSerie = new Serie(id: repositorio.ProximoId(),
+                                        titulo: entradaTitulo,
+                                        genero: (Genero)entradaGenero,
+                                        eps: entradaEps,
+                                        ano_estreia: entradaAno,
+                                        sinopse: entradaSinopse);
+            repositorio.Insere(novaSerie);
         }
 
         private static string ObterOpcaoUsuario()
         {
             WriteLine();
-            WriteLine("-----------Bem Vindo(a)!-----------");
             WriteLine("O que deseja fazer?");
             WriteLine("1 - Listar séries");
             WriteLine("2 - Adicionar nova série");
