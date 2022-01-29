@@ -26,10 +26,13 @@ namespace WishList
                         AtualizarSeries();
                         break;
                     case "4":
-                        ExcluirSeries();
+                        MarcarAssistido();
                         break;
                     case "5":
-                        //VisualizarSeries();
+                        ExcluirSeries();
+                        break;
+                    case "6":
+                        VisualizarSeries();
                         break;
                     case "C":
                         Clear();
@@ -43,6 +46,14 @@ namespace WishList
             ReadLine();
         }
 
+        private static void MarcarAssistido()
+        {
+            Write("Digite o id da série: ");
+            int idSerie = int.Parse(ReadLine());
+            Write("Digite a quantidade de episódios assistidos: ");
+            int epsAssistidos = int.Parse(ReadLine());
+            repositorio.MarcaAssistidos(idSerie,epsAssistidos);
+        }
         private static void ExcluirSeries()
         {
             Write("Digite o id da série: ");
@@ -81,7 +92,7 @@ namespace WishList
             WriteLine("Digite a sinopse da série: ");
             string entradaSinopse = ReadLine();
 
-            //int id, string titulo, Genero genero, int eps, int ano_estreia, string sinopse
+
             Serie atualizaSerie = new Serie(id: indiceSerie,
                                         titulo: entradaTitulo,
                                         genero: (Genero)entradaGenero,
@@ -105,8 +116,12 @@ namespace WishList
             foreach (var serie in lista)
             {
                 var excluido = serie.retornaExcluido();
+                var assistido = serie.retornaAssistido();
                 
-                WriteLine("#ID {0}: - {1} ({2})", serie.retornaId(), serie.retornaTitulo(), (excluido ? "Excluido" : ""));
+                if(!excluido)
+                {
+                    WriteLine("#ID {0}: - {1} - {2}/{3}({4})", serie.retornaId(), serie.retornaTitulo(), serie.retornaEpsAssistido(), serie.retornaTotalEps(), (assistido ? "Assistido" : "Para assistir"));
+                }
             }
         }
 
@@ -151,8 +166,9 @@ namespace WishList
             WriteLine("1 - Listar séries");
             WriteLine("2 - Adicionar nova série");
             WriteLine("3 - Atualizar série");
-            WriteLine("4 - Excluir série");
-            WriteLine("5 - Visualizar série");
+            WriteLine("4 - Marcar episódios assistidos");
+            WriteLine("5 - Excluir série");
+            WriteLine("6 - Visualizar série");
             WriteLine("C - Limpar tela");
             WriteLine("X - Sair");
             WriteLine("Digite a opção escolhida: ");

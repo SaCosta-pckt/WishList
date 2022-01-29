@@ -27,6 +27,24 @@ namespace WishList.src.Classes
             return listaSerie;
         }
 
+        public void MarcaAssistidos(int id, int epsAssistidos)
+        {            
+            if(epsAssistidos < listaSerie[id].retornaTotalEps())
+            {
+                listaSerie[id].setEpsAssistidos(epsAssistidos);
+            }
+            else if (epsAssistidos == listaSerie[id].retornaTotalEps())
+            {
+                listaSerie[id].setEpsAssistidos(epsAssistidos);
+                listaSerie[id].setAssistido(true);
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+        }
+
         public int ProximoId()
         {
             return listaSerie.Count;

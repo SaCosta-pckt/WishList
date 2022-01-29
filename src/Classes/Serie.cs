@@ -7,6 +7,7 @@ namespace WishList.src.Classes
         private int eps { get; set; }
         private int eps_assistidos { get; set; }
         private bool excluido { get; set; }
+        public bool assistido { get; set; }
 
     
         public Serie(int id, string titulo, Genero genero, int eps, int eps_assistidos, int ano_estreia)
@@ -36,7 +37,7 @@ namespace WishList.src.Classes
             retorno += "Título: " + this.titulo + Environment.NewLine;
             retorno += "Gênero: " + this.genero + Environment.NewLine;
             retorno += "Episódios: " + this.eps + Environment.NewLine;
-            retorno += "Assistidos: " + this.eps_assistidos + Environment.NewLine;
+            retorno += "Assistidos: " + this.eps_assistidos + "/" + this.eps + Environment.NewLine;
             retorno += "Ano de Lançamento: " + this.ano_estreia + Environment.NewLine;
             retorno += "Excluido: " + this.excluido;
             return retorno;
@@ -55,6 +56,32 @@ namespace WishList.src.Classes
         {
             return this.excluido;
         }
+
+        public bool retornaAssistido()
+        {
+            return this.assistido;
+        }
+
+        public void setAssistido(bool status)
+        {
+            this.assistido = status;
+        }
+
+        public void setEpsAssistidos(int eps_assistidos)
+        {
+            this.eps_assistidos = eps_assistidos;
+        }
+
+        public int retornaEpsAssistido()
+        {
+            return this.eps_assistidos;
+        }
+
+        public int retornaTotalEps()
+        {
+            return eps;
+        }
+
 
         public void Excluir()
         {

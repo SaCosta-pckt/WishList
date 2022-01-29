@@ -9,5 +9,6 @@ namespace WishList.src.Classes
         public string titulo { get; protected set; } = "";
         public Genero genero { get; protected set; }
         public string sinopse { get; protected set; }  = "Nenhuma sinopse foi cadastrada";
+        
     }
 }
